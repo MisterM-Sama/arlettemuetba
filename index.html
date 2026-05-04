@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Invitation musicale & poétique | Emma & Lucas - Cœurs en harmonie</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ========== PALETTE WAX HARMONISÉE ========== */
+    :root {
+      --wax-red: #C73E2D;
+      --wax-vert: #48A9A6;
+      --wax-bleu: #1E3B5C;
+      --wax-creme: #FEF5E7;
+      --wax-creme-fonce: #F8EDDF;
+      --wax-rouge-doux: #E25A45;
+      --shadow-color: rgba(30, 59, 92, 0.15);
+      --gold: #d4af37;
+      --gold-light: #f1d592;
+      --deep-red: #9b111e;
+      --rich-black: #1a1a1a;
+    }
+
+    body {
+      /* Plus d'image de fond wax — dégradé harmonieux de gauche à droite */
+      background: linear-gradient(90deg, #FEF5E7 0%, #FCE9DC 40%, #FADEC8 100%);
+      font-family: 'Raleway', sans-serif;
+      color: var(--wax-bleu);
+      line-height: 1.5;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Suppression du voile sombre qui n'a plus lieu d'être */
+    body::before {
+      display: none;
+    }
+
+    /* Filigrane musical léger conservé mais plus discret sur le dégradé */
+    body::after {
+      content: "♪ ♫ ♩ ♪";
+      font-size: 180px;
+      color: rgba(199, 62, 45, 0.04);
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      pointer-events: none;
+      font-family: serif;
+      white-space: pre;
+      transform: rotate(-15deg);
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ========== CARTES AVEC IMAGE DE FOND MARIÉS ========== */
+    .card {
+      position: relative;
+      border-radius: 2rem;
+      margin-bottom: 3rem;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.3s;
+      box-shadow: 0 20px 35px -12px var(--shadow-color);
+    }
+
+    /* Overlay sombre pour la lisibilité sur l'image des mariés */
+    .card-bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(30, 40, 35, 0.45);
+      backdrop-filter: blur(2px);
+      z-index: 1;
+      border-radius: 2rem;
+    }
+
+    /* Contenu de la carte au-dessus de l'overlay */
+    .card-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(254, 250, 242, 0.88);
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      padding: 1.8rem 1.8rem;
+      transition: background 0.2s;
+    }
+
+    .card:hover .card-content {
+      background: rgba(254, 250, 242, 0.94);
+    }
+
+    /* Hero spécifique (image principale déjà présente) */
+    .hero .card-content {
+      background: transparent;
+      backdrop-filter: none;
+      padding: 0;
+    }
+
+    .hero {
+      position: relative;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 70vh;
+      object-fit: cover;
+      filter: brightness(0.85) contrast(1.05);
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(30, 59, 92, 0.6) 0%, rgba(30, 59, 92, 0.3) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      z-index: 2;
+    }
+
+    .names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.8rem, 10vw, 5.5rem);
+      color: var(--wax-creme);
+      text-shadow: 2px 2px 14px rgba(30, 59, 92, 0.7);
+      background: rgba(199, 62, 45, 0.35);
+      padding: 0.2em 1em;
+      border-radius: 60px;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,242,228,0.4);
+    }
+
+    .slogan {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #FFF2DF;
+      background: rgba(30, 59, 92, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255,215,180,0.5);
+    }
+
+    .slogan i {
+      font-size: 1.3rem;
+      color: #FFD966;
+    }
+
+    .music-note-hero {
+      position: absolute;
+      bottom: 20px;
+      right: 25px;
+      font-size: 2.2rem;
+      color: rgba(255,245,225,0.9);
+      z-index: 2;
+    }
+
+    /* typo poétique */
+    .poem-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--wax-bleu);
+      border-left: 3px solid var(--wax-vert);
+      padding-left: 1.2rem;
+      margin: 1.5rem 0;
+    }
+
+    /* calendrier semaine (optionnel, gardé pour compatibilité) */
+    .week-calendar {
+      background: linear-gradient(135deg, rgba(254, 250, 242, 0.95), rgba(248, 237, 223, 0.92));
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      margin: 1.5rem 0;
+      border: 2px solid var(--wax-rouge-doux);
+      box-shadow: 0 20px 40px rgba(199, 62, 45, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .week-calendar::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmerCalendar 3s infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes shimmerCalendar {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .week-header {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--wax-red), var(--wax-rouge-doux));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+      animation: floatHeader 2.5s ease-in-out infinite;
+      letter-spacing: 2px;
+    }
+
+    @keyframes floatHeader {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+    }
+
+    /* invitation text */
+    .invitation-text {
+      background: rgba(255, 248, 235, 0.88);
+      padding: 1.4rem;
+      border-radius: 24px;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--wax-rouge-doux);
+    }
+
+    .program {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.8rem;
+    }
+
+    .program-step {
+      flex: 1;
+      min-width: 180px;
+      background: rgba(254, 250, 242, 0.9);
+      padding: 1rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(72, 169, 166, 0.5);
+    }
+
+    .program-step i {
+      color: var(--wax-vert);
+      font-size: 1.6rem;
+    }
+
+    .program-step h4 {
+      color: var(--wax-rouge-doux);
+    }
+
+    /* galerie */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 1.2rem;
+      transition: 0.3s;
+      filter: sepia(0.1) brightness(0.98);
+      border: 1px solid rgba(199, 62, 45, 0.2);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.02);
+      filter: sepia(0);
+    }
+
+    /* notes flottantes + cœurs */
+    .floating-notes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .note {
+      position: absolute;
+      font-size: 1.6rem;
+      animation: floatNote 12s linear infinite;
+      user-select: none;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+    }
+
+    @keyframes floatNote {
+      0% { transform: translateY(110vh) rotate(0deg); opacity: 0.15; }
+      100% { transform: translateY(-20vh) rotate(15deg); opacity: 0.8; }
+    }
+
+    @media (max-width: 750px) {
+      .container { padding: 1rem; }
+      .hero-img { height: 50vh; }
+      .slogan { font-size: 1rem; }
+    }
+
+    .quote-musical {
+      text-align: center;
+      font-size: 1.2rem;
+      margin: 1.5rem 0 0.5rem;
+      font-style: italic;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--wax-rouge-doux), transparent);
+      margin: 1.2rem 0;
+    }
+
+    .section-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--wax-red), var(--wax-rouge-doux), var(--wax-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.2rem;
+      text-align: center;
+      text-shadow: 0 4px 15px rgba(199, 62, 45, 0.3);
+      filter: drop-shadow(0 4px 8px rgba(199, 62, 45, 0.25));
+      animation: shimmerTitle 3s ease-in-out infinite;
+      position: relative;
+      letter-spacing: 1px;
+    }
+
+    @keyframes shimmerTitle {
+      0%, 100% { filter: drop-shadow(0 4px 8px rgba(199, 62, 45, 0.25)) brightness(1); }
+      50% { filter: drop-shadow(0 8px 16px rgba(199, 62, 45, 0.4)) brightness(1.1); }
+    }
+
+    #guestInput {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      border: none;
+      border-bottom: 1px dashed var(--wax-vert);
+      background: transparent;
+      width: 70%;
+      outline: none;
+      color: var(--wax-bleu);
+    }
+
+    /* ========== WEDDING CARD LUXE OR/NOIR ========== */
+    .wedding-card-luxury {
+      background-image: url('images/second.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 3rem 2.2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(212, 175, 55, 0.2);
+      text-align: center;
+      position: relative;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      overflow: hidden;
+    }
+    .wedding-card-luxury::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.92), rgba(10, 10, 10, 0.88));
+      z-index: 0.5;
+      pointer-events: none;
+    }
+
+    /* Cadre ornemental doré */
+    .wedding-card-luxury::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1.5px solid #d4af37;
+      border-radius: 8px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wedding-card-luxury::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+      animation: shimmerLuxe 4s infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes shimmerLuxe {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .wedding-card-luxury > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .luxury-ornament {
+      color: #d4af37;
+      font-size: 1.3rem;
+      margin: 0 12px;
+    }
+
+    .luxury-header-line {
+      width: 40px;
+      height: 1px;
+      background: #d4af37;
+      opacity: 0.5;
+    }
+
+    .calendar-title-luxury {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #d4af37;
+      margin: 1rem 0 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    .calendar-subtitle-luxury {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #e8e8e8;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #9b111e;
+      display: inline-block;
+      padding-bottom: 8px;
+    }
+
+    .calendar-description {
+      color: #999999;
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+
+    .calendar-week-luxury {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      margin: 2rem 0;
+    }
+
+    .day-header-luxury {
+      font-size: 0.65rem;
+      color: #d4af37;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .day-box-luxury {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 4px;
+      border-radius: 4px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid transparent;
+      background: rgba(60, 60, 60, 0.5);
+      position: relative;
+    }
+
+    .day-box-luxury:hover {
+      background: rgba(70, 70, 70, 0.7);
+      transform: translateY(-2px);
+    }
+
+    .day-number-luxury {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #d4d4d4;
+    }
+
+    .day-label-luxury {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #888888;
+      margin-top: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    .highlight-luxury {
+      background: linear-gradient(135deg, #9b111e 0%, #6e0c15 100%);
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(155, 17, 30, 0.7);
+      border: 1px solid #d4af37;
+      z-index: 5;
+    }
+
+    .highlight-luxury .day-number-luxury {
+      color: white;
+      font-weight: 700;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .highlight-luxury .day-label-luxury {
+      color: #d4af37;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .highlight-luxury::before {
+      content: "♥";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #9b111e;
+      filter: drop-shadow(0 0 4px #9b111e);
+      z-index: 10;
+    }
+
+    .calendar-footer-luxury {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #777777;
+    }
+
+    .calendar-footer-luxury strong {
+      color: #d4af37;
+    }
+
+    /* ========== WRAPPER CALENDRIER LUXE ========== */
+    .luxury-calendar-wrapper {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 3rem;
+      display: block;
+    }
+
+
+      /* ========== DESIGN Calendirer  ========== */
+
+     .calendar-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(10, 10, 10, 1) 100%);
+            padding: 3.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 40px 100px rgba(0,0,0,1);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            overflow: hidden;
+        }
+
+        .calendar-card-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/second.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .calendar-card-inner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .calendar-icon-float {
+            position: absolute;
+            animation: calendar-float-anim 12s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes calendar-float-anim {
+            0% { transform: translateY(110%) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.15; }
+            80% { opacity: 0.15; }
+            100% { transform: translateY(-20%) rotate(360deg); opacity: 0; }
+        }
+
+        .calendar-card-border {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            pointer-events: none;
+            opacity: 0.2;
+            z-index: 2;
+        }
+
+        .calendar-ornament-container {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            color: var(--gold);
+            position: relative;
+            z-index: 4;
+        }
+
+        .calendar-title-cursive {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 0.2rem;
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 4;
+        }
+
+        .calendar-subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            color: white;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 4;
+        }
+
+        .calendar-week {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin: 1.5rem auto;
+            max-width: 320px;
+            position: relative;
+            z-index: 4;
+        }
+
+        .calendar-day-header {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            color: var(--gold);
+            letter-spacing: 1px;
+            padding-bottom: 8px;
+        }
+
+        .calendar-day-box {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .calendar-day-box.calendar-highlight {
+            background: var(--deep-red);
+            color: white;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 15px rgba(155, 17, 30, 0.6);
+            transform: scale(1.15);
+            font-weight: 600;
+            border: 1px solid var(--gold);
+        }
+
+        .calendar-location-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            z-index: 4;
+        }
+
+        .calendar-footer-text {
+            color: white;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-footer-text strong {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+        }
+
+        .calendar-location-details {
+            color: #ddd;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .calendar-location-icon {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .calendar-venue-name {
+            color: var(--gold-light);
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .calendar-address-text {
+            max-width: 280px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .calendar-shine-effect {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.03), transparent);
+            transform: skewX(-25deg);
+            animation: calendar-shine-anim 10s infinite ease-in-out;
+            z-index: 3;
+        }
+
+        @keyframes calendar-shine-anim {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+
+
+        /* ========== FIN DESIGN CALENDRIER  ========== */
+
+
+
+
+        /* ========== DEBUT DESIGN Invites  ========== */
+
+                .invite-card-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/third.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+            z-index: 0;
+        }
+
+        .invite-card-inner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .invite-icon {
+            position: absolute;
+            animation: invite-float-internal 12s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes invite-float-internal {
+            0% { transform: translateY(110%) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.15; }
+            80% { opacity: 0.15; }
+            100% { transform: translateY(-20%) rotate(360deg); opacity: 0; }
+        }
+
+        .invite-invitation-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(10, 10, 10, 1) 100%);
+            padding: 4rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 40px 100px rgba(0,0,0,1);
+            text-align: center;
+            max-width: 550px;
+            width: 95%;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            overflow: hidden;
+        }
+
+        .invite-card-border {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            pointer-events: none;
+            opacity: 0.2;
+            z-index: 2;
+        }
+
+        .invite-guest-name-container {
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 4;
+        }
+
+        .invite-to-label {
+            font-size: 0.7rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .invite-guest-name {
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 300;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            display: inline-block;
+            padding: 0 20px 10px;
+        }
+
+        .invite-content-container {
+            position: relative;
+            z-index: 4;
+            color: #ddd;
+            line-height: 1.8;
+        }
+
+        .invite-families-text {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .invite-names-highlight {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin: 0.5rem 0;
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
+
+        .invite-heart-floral-wrapper {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+            padding: 20px;
+        }
+
+        .invite-heart-main {
+            color: var(--deep-red);
+            font-size: 4.5rem;
+            filter: drop-shadow(0 0 20px rgba(155, 17, 30, 0.7));
+            animation: invite-pulse-elegant 3s infinite ease-in-out;
+            position: relative;
+            z-index: 5;
+        }
+
+        .invite-floral-svg {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            opacity: 0.7;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        @keyframes invite-pulse-elegant {
+            0% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(155, 17, 30, 0.7)); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 35px rgba(155, 17, 30, 0.9)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(155, 17, 30, 0.7)); }
+        }
+
+        .invite-closing-text {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--gold);
+            margin-top: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .invite-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.03), transparent);
+            transform: skewX(-25deg);
+            animation: invite-shine-anim 10s infinite ease-in-out;
+            z-index: 3;
+        }
+
+        @keyframes invite-shine-anim {
+            0% { left: -100%; }
+            15% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        
+
+
+        /* ========== FIN DESIGN invites  ========== */
+
+
+
+             .programme-card-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/fourth.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .programme-card-inner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .programme-icon-float {
+            position: absolute;
+            animation: programme-float-anim 15s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes programme-float-anim {
+            0% { transform: translateY(110%) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.1; }
+            80% { opacity: 0.1; }
+            100% { transform: translateY(-20%) rotate(360deg); opacity: 0; }
+        }
+
+        .programme-program-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(10, 10, 10, 1) 100%);
+            padding: 3.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 40px 100px rgba(0,0,0,1);
+            text-align: center;
+            max-width: 500px;
+            width: 92%;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            overflow: hidden;
+        }
+
+        .programme-card-border {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            pointer-events: none;
+            opacity: 0.15;
+            z-index: 2;
+        }
+
+        .programme-intro-text {
+            font-size: 0.85rem;
+            color: #ccc;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            padding: 0 10px;
+            position: relative;
+            z-index: 4;
+        }
+
+        .programme-program-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 2.5rem;
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 4;
+        }
+
+        .programme-timeline {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+            z-index: 4;
+        }
+
+        .programme-timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .programme-time {
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 0.85rem;
+            width: 60px;
+            flex-shrink: 0;
+        }
+
+        .programme-icon-wrapper {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 15px;
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .programme-event-desc {
+            color: white;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            font-weight: 300;
+        }
+
+        .programme-gift-note {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            position: relative;
+            z-index: 4;
+        }
+
+        .programme-gift-text {
+            color: var(--gold-light);
+            font-size: 0.85rem;
+            font-style: italic;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+        }
+
+        .programme-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.02), transparent);
+            transform: skewX(-25deg);
+            animation: programme-shine-anim 12s infinite ease-in-out;
+            z-index: 3;
+        }
+
+        @keyframes programme-shine-anim {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .programme-footer {
+            margin-top: 2rem;
+            color: var(--gold);
+            opacity: 0.6;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Icônes flottantes internes aux cartes */
+.icon {
+    position: absolute;
+    animation: float-internal 12s infinite linear;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes float-internal {
+    0% {
+        transform: translateY(110%) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.3;
+    }
+    80% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-20%) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+<div class="floating-notes" id="floatingNotes"></div>
+
+<div class="container">
+  <!-- CARD HERO (image principale) -->
+  <div class="card hero" style="background: none;">
+    <img class="hero-img" src="images/first.png" alt="Arlette et Serge">
+    <div class="hero-overlay">
+      <div class="names">Arlette <i class="fas fa-heart" style="color: #FFB7A0;"></i> Serge</div>
+      <div class="slogan">
+        <i class="fas fa-music"></i> Une mélodie chantée par deux cœurs
+      </div>
+      <div class="music-note-hero"><i class="fas fa-guitar"></i> <i class="fas fa-feather-alt"></i></div>
+    </div>
+  </div>
+
+  <!-- CARD LUXE : Calendrier Or/Noir -->
+
+
+
+
+     <div class="calendar-card">
+        <div class="calendar-card-image-bg"></div>
+        <div class="calendar-card-inner-bg" id="calendar-internalIcons"></div>
+        <div class="calendar-card-border"></div>
+        <div class="calendar-shine-effect"></div>
+        
+        <div class="calendar-ornament-container">
+            <span>♪</span>
+            <span style="color: var(--deep-red);">❤</span>
+            <span>♫</span>
+        </div>
+
+        <h1 class="calendar-title-cursive">Date</h1>
+        <h2 class="calendar-subtitle">MAI 2026</h2>
+
+        <p class="mb-4 px-6 text-[9px] uppercase tracking-[0.2em] leading-relaxed opacity-90" style="color: white; position: relative; z-index: 4;">
+            Une symphonie d'amour et de bonheur <br> à partager ensemble.
+        </p>
+
+        <div class="calendar-week">
+            <div class="calendar-day-header">Lun</div>
+            <div class="calendar-day-header">Mar</div>
+            <div class="calendar-day-header">Mer</div>
+            <div class="calendar-day-header">Jeu</div>
+            <div class="calendar-day-header">Ven</div>
+            <div class="calendar-day-header">Sam</div>
+            <div class="calendar-day-header">Dim</div>
+
+            <div class="calendar-day-box"><span>11</span></div>
+            <div class="calendar-day-box"><span>12</span></div>
+            <div class="calendar-day-box"><span>13</span></div>
+            <div class="calendar-day-box"><span>14</span></div>
+            <div class="calendar-day-box"><span>15</span></div>
+            <div class="calendar-day-box calendar-highlight">
+                <span>16</span>
+            </div>
+            <div class="calendar-day-box"><span>17</span></div>
+        </div>
+
+        <div class="calendar-location-section">
+            <div class="calendar-footer-text">
+                Le samedi <strong>16 Mai</strong> à 20h
+            </div>
+            
+            <div class="calendar-location-details">
+                <div class="calendar-location-icon">📍</div>
+                <div class="calendar-venue-name">Salle de Fête Merge</div>
+                <div class="calendar-address-text">
+                    Croisement des avenues Baraka et Huilerie N°165 <br>
+                    <span style="font-size: 0.75rem;">Réf : Rond Point Huilerie</span>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  <!-- CARD 2 : Invité + texte - fond image mariés -->
+    <div class="invite-invitation-card" style="margin: auto;">
+        <div class="invite-card-image-bg"></div>
+        <div class="invite-card-inner-bg" id="invite-internalIcons"></div>
+        <div class="invite-card-border"></div>
+        <div class="invite-shine"></div>
+
+        <div class="invite-guest-name-container">
+            <span class="invite-to-label" style="font-weight: bold;">À l'attention de</span>
+            <span class="invite-guest-name">M. Invité</span>
+        </div>
+
+        <div class="invite-content-container">
+            <p class="invite-families-text">
+                Les familles <strong>Muteba</strong> et <strong>BALEJA</strong><br>
+                sont heureuses de vous inviter au mariage<br>
+                de leur fille et de leur fils,
+            </p>
+
+            <h1 class="invite-names-highlight" style="font-size: 240%;;">Arlette & Serge</h1>
+
+            <div class="invite-heart-floral-wrapper">
+                <svg class="invite-floral-svg" viewBox="0 0 200 200">
+                    <path d="M70,140 C40,120 30,80 50,50 C55,40 70,30 85,35" fill="none" stroke="#d4af37" stroke-width="1.5" />
+                    <path d="M45,85 L35,75 M52,70 L42,60 M62,55 L55,45" stroke="#d4af37" stroke-width="1.5" />
+                    <path d="M130,140 C160,120 170,80 150,50 C145,40 130,30 115,35" fill="none" stroke="#d4af37" stroke-width="1.5" />
+                    <path d="M155,85 L165,75 M148,70 L158,60 M138,55 L145,45" stroke="#d4af37" stroke-width="1.5" />
+                    <path d="M100,165 Q80,180 60,160 M100,165 Q120,180 140,160" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.5" />
+                    <path d="M100,20 L100,10" stroke="#d4af37" stroke-width="2" />
+                </svg>
+                <div class="invite-heart-main">❤</div>
+            </div>
+
+            <p class="invite-closing-text">
+                Pour sceller leur union à jamais.
+            </p>
+        </div>
+    </div>
+
+
+
+
+        <div class="programme-program-card" style="margin: auto; margin-top: 3rem;">
+        <div class="programme-card-image-bg"></div>
+        <div class="programme-card-inner-bg" id="programme-internalIcons"></div>
+        <div class="programme-card-border"></div>
+        <div class="programme-shine"></div>
+
+        <p class="programme-intro-text">
+            "Nos deux cœurs ont accordé leurs voix pour n'en chanter plus qu'une. <br>
+            Nous vous attendons pour faire danser les mots et célébrer le premier refrain de notre vie à deux."
+        </p>
+
+        <h1 class="programme-program-title">Programme de la soirée</h1>
+
+        <div class="programme-timeline">
+            <div class="programme-timeline-item">
+                <div class="programme-time">21h20</div>
+                <div class="programme-icon-wrapper">✨</div>
+                <div class="programme-event-desc">Entrée des mariés</div>
+            </div>
+
+            <div class="programme-timeline-item">
+                <div class="programme-time">21h40</div>
+                <div class="programme-icon-wrapper">💃</div>
+                <div class="programme-event-desc">Ouverture du bal</div>
+            </div>
+
+            <div class="programme-timeline-item">
+                <div class="programme-time">22h00</div>
+                <div class="programme-icon-wrapper">🎁</div>
+                <div class="programme-event-desc">Remise des cadeaux</div>
+            </div>
+
+            <div class="programme-timeline-item">
+                <div class="programme-time">22h40</div>
+                <div class="programme-icon-wrapper">🍽️</div>
+                <div class="programme-event-desc">Buffet</div>
+            </div>
+
+            <div class="programme-timeline-item">
+                <div class="programme-time">23h30</div>
+                <div class="programme-icon-wrapper">🎂</div>
+                <div class="programme-event-desc">Entrée Gâteaux de mariage</div>
+            </div>
+
+            <div class="programme-timeline-item">
+                <div class="programme-time">00h00</div>
+                <div class="programme-icon-wrapper">🎉</div>
+                <div class="programme-event-desc">Ambiance festive</div>
+            </div>
+        </div>
+
+        <div class="programme-gift-note">
+            <p class="programme-gift-text">
+                "Le couple vous prie de bien vouloir leur faire plaisir avec vos cadeaux en espèces. Merci"
+            </p>
+        </div>
+
+        <div class="programme-footer">
+            ARLETTE & SERGE
+        </div>
+    </div>
+
+    
+
+
+  <!-- CARD 3 : Programme - fond image mariés -->
+  
+  <!-- CARD 4 : Galerie - fond image mariés -->
+
+</div>
+
+<script>
+  // Gestion des icônes flottantes internes aux cartes (optionnel mais sans erreur)
+  const internalContainers = document.querySelectorAll('.calendar-card-inner-bg, .invite-card-inner-bg, .programme-card-inner-bg');
+  const items = [
+    { char: '♥', color: '#9b111e' },
+    { char: '♪', color: '#d4af37' },
+    { char: '♫', color: '#d4af37' },
+    { char: '✧', color: '#ffffff' }
+  ];
+
+  internalContainers.forEach(container => {
+    for (let i = 0; i < 15; i++) {
+      const data = items[Math.floor(Math.random() * items.length)];
+      const el = document.createElement('div');
+      el.className = 'icon';
+      el.innerText = data.char;
+      el.style.color = data.color;
+      el.style.left = Math.random() * 100 + '%';
+      el.style.animationDelay = Math.random() * 10 + 's';
+      el.style.fontSize = (Math.random() * 0.8 + 0.4) + 'rem';
+      container.appendChild(el);
+    }
+  });
+
+  // NOTES FLOTTANTES GÉNÉRALES (cœurs + musique)
+  function createFloatingMusicAndHearts() {
+    const container = document.getElementById('floatingNotes');
+    if (!container) return;
+    container.innerHTML = '';
+    const icons = [
+      'fa-music', 'fa-music', 'fa-guitar', 'fa-drum', 'fa-harp', 'fa-microphone-alt',
+      'fa-heart', 'fa-heart', 'fa-heartbeat', 'fa-heart', 'fa-music', 'fa-feather-alt',
+      'fa-heart', 'fa-music', 'fa-head-side-headphones', 'fa-heart'
+    ];
+    for (let i = 0; i < 38; i++) {
+      const note = document.createElement('div');
+      note.classList.add('note');
+      const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+      let colorChoice = '#48A9A6';
+      if (randomIcon === 'fa-heart' || randomIcon === 'fa-heartbeat') {
+        colorChoice = '#C73E2D';
+      } else if (randomIcon === 'fa-feather-alt') {
+        colorChoice = '#E25A45';
+      } else {
+        colorChoice = '#48A9A6';
+      }
+      const size = Math.random() * 32 + 18;
+      note.style.fontSize = size + 'px';
+      note.style.left = Math.random() * 100 + '%';
+      note.style.animationDuration = 12 + Math.random() * 18 + 's';
+      note.style.animationDelay = Math.random() * 15 + 's';
+      note.style.opacity = Math.random() * 0.5 + 0.2;
+      note.innerHTML = `<i class="fas ${randomIcon}" style="color: ${colorChoice}; filter: drop-shadow(0 0 3px rgba(0,0,0,0.1));"></i>`;
+      container.appendChild(note);
+    }
+  }
+  createFloatingMusicAndHearts();
+
+  // Animation au scroll des cartes (optionnel)
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(card);
+  });
+  window.addEventListener('load', () => {
+    cards.forEach(card => card.style.opacity = '1');
+  });
+</script>
+</body>
+</html>
